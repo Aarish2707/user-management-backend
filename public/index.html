@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="head">User Management System</h1>
+
+    <!-- Form to Add User -->
+    <form id="userForm">
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <input type="text" id="phone" placeholder="Enter Phone" required>
+        <button class="add-btn" type="submit">Add User</button>
+    </form>
+
+    <!-- User List Table -->
+    <div  class="head2"><h2>List Of Users</h2></div>
+    <table border="3">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+    </table>
+    <!-- Updating user -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Update User</h2>
+            <input type="hidden" id="updateUserId">
+            <input type="text" id="updateName" placeholder="Enter Name" required>
+            <input type="email" id="updateEmail" placeholder="Enter Email" required>
+            <input type="text" id="updatePhone" placeholder="Enter Phone" required>
+            <button onclick="saveUpdatedUser()">Save Changes</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
