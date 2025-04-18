@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/User');
 const router = express.Router();
+const verifyToken = require('../Middleware/auth');
 
 let users = [];
 
@@ -17,7 +18,7 @@ router.post('/users', async (req, res) => {
 });
 
 // Get Users
-router.get('/users', async (req, res) => {
+router.get('/users',verifyToken, async (req, res) => {
     try{
         const users = await User.find();
         res.json(users);
