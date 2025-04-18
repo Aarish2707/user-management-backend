@@ -1,4 +1,4 @@
-const API_URL = "https://user-management-backend-2-9ynl.onrender.com/api/users"; // Backend API URL
+const API_URL = "https://user-management-backend-3-s5go.onrender.com/api/users"; // Backend API URL
 
 // Fetch and display users in a table
 async function fetchUsers() {
