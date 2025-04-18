@@ -17,4 +17,4 @@ const verifyJwtToken = (req, res, next) => {
     }
 };
 
-module.exports = verifyToken;
+module.exports = verifyJwtToken;

@@ -83,3 +83,12 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
 
 // Load users on page load
 fetchUsers();
+
+const token = localStorage.getItem('token');
+
+const res = await fetch(API_URL, {
+  method: "GET",
+  headers: {
+    "Authorization": `Bearer ${token}`
+  }
+});
