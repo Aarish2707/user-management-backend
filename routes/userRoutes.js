@@ -33,7 +33,7 @@ router.get('/users',verifyJwtToken, checkRole(['admin', 'user']), async (req, re
 });
 
 // Update User
-router.put('/users/:id', checkRole(['admin']), async (req, res) => {
+router.put('/users/:id', verifyJwtToken, checkRole(['admin']), async (req, res) => {
     try{
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new:true});
         if (!updatedUser){
@@ -47,7 +47,7 @@ router.put('/users/:id', checkRole(['admin']), async (req, res) => {
 });
 
 // Delete User
-router.delete('/users/:id', checkRole(['admin']), async (req, res) => {
+router.delete('/users/:id', verifyJwtToken, checkRole(['admin']), async (req, res) => {
     const { id } = req.params;
 
     if (!id) {
