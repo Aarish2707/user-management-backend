@@ -8,11 +8,15 @@ let users = [];
 // Add User
 router.post('/users',verifyJwtToken, checkRole(['admin', 'user']), async (req, res) => {
     try{
+        console.log("Received data:", req.body); // Check incoming data
+
         const newUser = new User(req.body);
         await newUser.save();
         res.status(201).json(newUser);
     }
     catch(err){
+        console.error("Error in POST /users:", err); // 👀 Log full error
+
         res.status(500).json({message:'Error Creating User', error:err});
     }
 });

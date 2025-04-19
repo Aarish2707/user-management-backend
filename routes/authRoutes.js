@@ -60,7 +60,7 @@ router.post('/register', async (req, res) => {
         await user.save();
 
         // ✉️ Send verification email
-        const verificationLink = `https://6803303a81d35ca5804a98e3--radiant-druid-51b6a2.netlify.app//verify?email=${email}`;
+        const verificationLink = `https://stellular-haupia-fb1943.netlify.app/verify?email=${email}`;
         await transporter.sendMail({
             from: `"User Management" <${process.env.EMAIL_USER}>`,
             to: email,
