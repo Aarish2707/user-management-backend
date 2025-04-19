@@ -17,4 +17,15 @@ const verifyJwtToken = (req, res, next) => {
     }
 };
 
-module.exports = verifyJwtToken;
+//role check
+const checkRole = (roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Access Denied: Insufficient Permissions' });
+        }
+        next();
+    };
+};
+
+
+module.exports ={verifyJwtToken, checkRole};

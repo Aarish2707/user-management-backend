@@ -27,7 +27,11 @@ const userSchema = new mongoose.Schema({
       type: String,
       enum: ['user', 'admin'],
       default: 'user'
-    }
+    },
+    emailVerified:  {
+      type: Boolean,
+      default: false
+    } 
   });
 
   //code for hashing passwords

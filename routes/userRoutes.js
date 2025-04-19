@@ -1,12 +1,12 @@
 const express = require('express');
 const User = require('../models/User');
 const router = express.Router();
-const verifyToken = require('../Middleware/auth');
+const { verifyJwtToken, checkRole } = require('../Middleware/auth');
 
 let users = [];
 
 // Add User
-router.post('/users', async (req, res) => {
+router.post('/users',verifyJwtToken, checkRole(['admin', 'user']), async (req, res) => {
     try{
         const newUser = new User(req.body);
         await newUser.save();
@@ -18,7 +18,7 @@ router.post('/users', async (req, res) => {
 });
 
 // Get Users
-router.get('/users',verifyToken, async (req, res) => {
+router.get('/users',verifyJwtToken, checkRole(['admin', 'user']), async (req, res) => {
     try{
         const users = await User.find();
         res.json(users);
@@ -29,7 +29,7 @@ router.get('/users',verifyToken, async (req, res) => {
 });
 
 // Update User
-router.put('/users/:id', async (req, res) => {
+router.put('/users/:id', checkRole(['admin']), async (req, res) => {
     try{
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new:true});
         if (!updatedUser){
@@ -43,7 +43,7 @@ router.put('/users/:id', async (req, res) => {
 });
 
 // Delete User
-router.delete('/users/:id', async (req, res) => {
+router.delete('/users/:id', checkRole(['admin']), async (req, res) => {
     const { id } = req.params;
 
     if (!id) {
