@@ -1,0 +1,30 @@
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# Database files
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+
+# Security files
+*.pem
+*.key
+config/secrets.js
